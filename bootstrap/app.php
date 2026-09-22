@@ -19,3 +19,23 @@ return Application::configure(basePath: dirname(__DIR__))
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
     })->create();
+
+// Konfigurasi khusus Vercel: Pindahkan storage ke /tmp
+if (isset($_SERVER['VERCEL']) || isset($_ENV['VERCEL'])) {
+    $app->useStoragePath('/tmp');
+    
+    $directories = [
+        '/tmp/framework/cache/data',
+        '/tmp/framework/sessions',
+        '/tmp/framework/views',
+        '/tmp/logs'
+    ];
+    
+    foreach ($directories as $directory) {
+        if (!is_dir($directory)) {
+            mkdir($directory, 0755, true);
+        }
+    }
+}
+
+return $app;
