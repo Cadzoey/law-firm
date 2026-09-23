@@ -7,7 +7,7 @@
         "build": "vite build",
         "dev": "vite",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d dist"
+        "deploy": "gh-pages -d public/build"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
