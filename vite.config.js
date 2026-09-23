@@ -4,9 +4,9 @@ import { bunny } from 'laravel-vite-plugin/fonts';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-    base: '/law-firm/', // Wajib ada agar URL asset di GitHub Pages tidak 404
+    base: '/law-firm/',
     build: {
-        outDir: 'dist',  // Mengarahkan hasil build ke folder dist
+        outDir: 'dist', // Tambahkan baris ini agar output build masuk ke folder dist
     },
     plugins: [
         laravel({
